@@ -1,36 +1,30 @@
-source 'https://rubygems.org'
+# frozen_string_literal: true
+
+source "https://rubygems.org"
+
+git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
+
+ruby '2.7.3'
 
 gem 'capybara'
 gem 'pg'
+gem 'rspec'
 gem 'sinatra'
-gem 'sinatra-contrib'
-gem 'thin'
-gem 'require_all'
-gem 'activerecord', '5.2'
+gem 'sinatra-contrib', require: false
 gem 'sinatra-activerecord'
-gem 'rake'
+gem 'sinatra-flash'
 
-  group :development do
-    gem 'shotgun'
-    gem 'pry'
-    gem 'tux'
-  end
-
-group :test do
-  gem 'rspec'
-  gem 'rubocop', '0.79.0'
-  gem 'simplecov', require: false
+group :development, :test do
+  gem 'pry'
+  gem "rubocop", "0.79.0"
+  gem 'rack'
+  gem 'simplecov', require: false, group: :test
   gem 'simplecov-console', require: false
 end
 
-group :database do
-  gem 'sqlite3'
-  gem 'dm-core'
-  gem 'dm-migrations'
-  gem 'dm-validations'
-  gem 'dm-timestamps'
-  gem 'dm-postgres-adapter'
-end
 
-
-gem "webrick", "~> 1.7"
+gem 'activerecord', '6.1.4'
+gem 'bcrypt'
+gem 'dotenv'
+gem 'require_all'
+gem 'webrick'
